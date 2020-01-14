@@ -1,11 +1,13 @@
+#include "toolbox.h"
+
 int main()
 {
-	*(unsigned int*)0x04000000 = 0x0403;
+    REG_DISPCNT = DCNT_MODE3 | DCNT_BG2;
 	
 
-	((unsigned short*)0x06000000)[120+80*240] = 0x001F;
-	((unsigned short*)0x06000000)[136+80*240] = 0x03E0;
-	((unsigned short*)0x06000000)[120+96*240] = 0x7C00;
+    m3_plot(120, 80, CLR_MAG);
+    m3_plot(136, 80, CLR_CYAN);
+    m3_plot(120, 96, CLR_YELLOW);
 
 	while(1);
 
